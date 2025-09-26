@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E60Motors</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+      background-image: url('https://www.transparenttextures.com/patterns/diagmonds.png');
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: rgba(31, 31, 31, 0.9);
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      backdrop-filter: blur(5px);
+    }
+
+    .logo-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-title img {
+      height: 55px;
+    }
+
+    .logo-title h1 {
+      margin: 0;
+      color: #ff4c4c;
+    }
+
+    .search-bar {
+      width: 100%;
+      max-width: 400px;
+      margin-top: 10px;
+    }
+
+    .search-bar input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      font-size: 16px;
+      outline: none;
+    }
+
+    main {
+      display: flex;
+      padding: 20px;
+      gap: 20px;
+    }
+
+    .mods-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+      flex: 3;
+    }
+
+    .mod-card {
+      background-color: rgba(31, 31, 31, 0.9);
+      padding: 10px;
+      border-radius: 10px;
+      text-align: center;
+      backdrop-filter: blur(5px);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .mod-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px #ff4c4c;
+    }
+
+    .mod-card img {
+      max-width: 100%;
+      border-radius: 10px;
+    }
+
+    .mod-card p {
+      margin: 5px 0;
+    }
+
+    .mod-card a {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 5px;
+      background-color: #ff4c4c;
+      color: #fff;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .mod-card a:hover {
+      background-color: #ff0000;
+    }
+
+    .tags {
+      flex: 1;
+      background-color: rgba(31, 31, 31, 0.9);
+      padding: 10px;
+      border-radius: 10px;
+      height: fit-content;
+      backdrop-filter: blur(5px);
+    }
+
+    .tags h3 {
+      margin-top: 0;
+    }
+
+    .tags span {
+      display: inline-block;
+      background-color: #333;
+      padding: 5px 10px;
+      border-radius: 5px;
+      margin: 5px 5px 0 0;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .tags span:hover {
+      background-color: #ff4c4c;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-title">
+      <img src="https://i.postimg.cc/cHRLjcQ0/Gemini-Generated-Image-qrbcc8qrbcc8qrbc-removebg-preview.png" alt="Logo">
+      <h1>E60Motors</h1>
+    </div>
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Mod ara..." onkeyup="filterMods()">
+    </div>
+  </header>
+
+  <main>
+    <div class="mods-grid" id="modsGrid">
+      <div class="mod-card" data-tags="araba,performans,mta">
+        <img src="https://i.postimg.cc/kGyjXYM7/image.png" alt="BMW M5 CS">
+        <h3>BMW M5 CS</h3>
+        <p>ID : 566</p>
+        <p>By : E60Motors</p>
+        <p>Tags: #araba #performans #mta</p>
+        <a href="BmwM5CS.zip" download>İndir</a>
+      </div>
+    </div>
+
+    <div class="tags">
+      <h3>Tag Seç</h3>
+      <span onclick="setTagFilter('araba')">#araba</span>
+      <span onclick="setTagFilter('performans')">#performans</span>
+      <span onclick="setTagFilter('mta')">#mta</span>
+      <span onclick="setTagFilter('')">#Hepsi</span>
+    </div>
+  </main>
+
+  <script>
+    let currentTag = '';
+
+    function setTagFilter(tag) {
+      currentTag = tag;
+      filterMods();
+    }
+
+    function filterMods() {
+      const searchText = document.getElementById('searchInput').value.toLowerCase();
+      const mods = document.querySelectorAll('.mod-card');
+
+      mods.forEach(mod => {
+        const modName = mod.querySelector('h3').innerText.toLowerCase();
+        const tags = mod.getAttribute('data-tags').split(',');
+
+        const matchesTag = currentTag === '' || tags.includes(currentTag);
+        const matchesSearch = modName.includes(searchText);
+
+        if (matchesTag && matchesSearch) {
+          mod.style.display = 'block';
+        } else {
+          mod.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>
