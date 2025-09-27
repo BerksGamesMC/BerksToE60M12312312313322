@@ -12,6 +12,9 @@
             background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
             background-image: url('https://www.transparenttextures.com/patterns/diagmonds.png');
             color: #fff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         header {
@@ -57,6 +60,7 @@
             display: flex;
             padding: 20px;
             gap: 20px;
+            flex: 1;
         }
 
         .mods-grid {
@@ -125,6 +129,14 @@
         .tags span:hover {
             background-color: #ff4c4c;
         }
+
+        footer {
+            text-align: center;
+            background-color: rgba(31, 31, 31, 0.9);
+            padding: 15px;
+            font-size: 14px;
+            backdrop-filter: blur(5px);
+        }
     </style>
 </head>
 <body>
@@ -159,6 +171,36 @@
                 <p>Tags: #araba #mta</p>
                 <a href="cls63-E60Motors.zip" download><button>İndir</button></a>
             </div>
+
+            <!-- BMW M5 E60 -->
+            <div class="mod-card" data-tags="araba,mta">
+                <img src="https://i.postimg.cc/C1dhRCKg/image.png" alt="BMW M5 E60">
+                <h3>BMW M5 E60</h3>
+                <p>ID: 475</p>
+                <p>By: E60Motors</p>
+                <p>Tags: #araba #mta</p>
+                <a href="BmwM5E60-E60Motors.zip" download><button>İndir</button></a>
+            </div>
+
+            <!-- Holigann 2107 -->
+            <div class="mod-card" data-tags="araba,mta">
+                <img src="https://i.postimg.cc/43KKMhCJ/image.png" alt="Holigann 2107">
+                <h3>Holigann 2107</h3>
+                <p>ID: 429</p>
+                <p>By: E60Motors</p>
+                <p>Tags: #araba #mta</p>
+                <a href="Holigann07.zip" download><button>İndir</button></a>
+            </div>
+
+            <!-- Ferrari LaFerrari -->
+            <div class="mod-card" data-tags="araba,performans,mta">
+                <img src="https://i.postimg.cc/vZP1mt79/image.png" alt="Ferrari LaFerrari">
+                <h3>Ferrari LaFerrari</h3>
+                <p>ID: 415</p>
+                <p>By: E60Motors</p>
+                <p>Tags: #araba #performans #mta</p>
+                <a href="LaFerrari-E60Motors.zip" download><button>İndir</button></a>
+            </div>
         </div>
 
         <div class="tags">
@@ -169,6 +211,10 @@
             <span onclick="setTagFilter('')">#Hepsi</span>
         </div>
     </main>
+
+    <footer>
+        © 2025 E60Motors | Tüm Hakları Saklıdır.
+    </footer>
 
     <script>
         let currentTag = '';
